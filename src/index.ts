@@ -3,8 +3,8 @@ import cors from "cors";
 import { routes } from "./routes";
 import admin from "firebase-admin";
 import { initializeApp } from "firebase/app";
-import serviceAccount from "../key.json";
 import "dotenv/config";
+import "dotenv-json";
 
 const app = express();
 app.use(cors());
@@ -22,9 +22,9 @@ export const firebaseApp = initializeApp({
 
 admin.initializeApp({
   credential: admin.credential.cert({
-    privateKey: serviceAccount.private_key,
-    clientEmail: serviceAccount.client_email,
-    projectId: serviceAccount.project_id,
+    privateKey: process.env.SA_PRIVATE_KEY,
+    clientEmail: process.env.SA_CLIENT_EMAIL,
+    projectId: process.env.SA_PROJECT_ID,
   }),
 });
 
