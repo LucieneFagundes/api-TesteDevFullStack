@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "16.14.x",
+    "npm": "8.5.x"
+  },
   "scripts": {
     "start": "node index.js",
     "postinstall": "tsc",
