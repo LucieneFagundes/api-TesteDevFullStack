@@ -3,6 +3,7 @@ import cors from "cors";
 import { routes } from "./routes";
 import admin from "firebase-admin";
 import serviceAccount from "../serviceAccount.json";
+import { firebaseApp } from "./firebase-app-config";
 
 const app = express();
 app.use(cors());
