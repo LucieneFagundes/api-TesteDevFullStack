@@ -1,4 +1,4 @@
 /node_modules
-/.env
-/key.json
 /dist
+.env
+serviceAccount.json

@@ -2,9 +2,9 @@ import express from "express";
 import cors from "cors";
 import { routes } from "./routes";
 import admin from "firebase-admin";
-import { initializeApp } from "firebase/app";
-import "dotenv/config";
-import "dotenv-json";
+import serviceAccount from "../serviceAccount.json";
+import { cert } from "firebase-admin/app";
+// import { initializeApp } from "firebase/app";
 
 const app = express();
 app.use(cors());
@@ -22,20 +22,20 @@ app.use(function (req, res, next) {
   next();
 });
 
-export const firebaseApp = initializeApp({
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
-});
+// export const firebaseApp = initializeApp({
+//   apiKey: process.env.API_KEY,
+//   authDomain: process.env.AUTH_DOMAIN,
+//   projectId: process.env.PROJECT_ID,
+//   storageBucket: process.env.STORAGE_BUCKET,
+//   messagingSenderId: process.env.MESSAGING_SENDER_ID,
+//   appId: process.env.APP_ID,
+// });
 
 admin.initializeApp({
   credential: admin.credential.cert({
-    privateKey: process.env.SA_PRIVATE_KEY,
-    clientEmail: process.env.SA_CLIENT_EMAIL,
-    projectId: process.env.SA_PROJECT_ID,
+    clientEmail: serviceAccount.client_email,
+    privateKey: serviceAccount.private_key,
+    projectId: serviceAccount.project_id,
   }),
 });
 
