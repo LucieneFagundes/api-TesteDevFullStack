@@ -8,4 +8,3 @@ export const firebaseApp = initializeApp({
   messagingSenderId: process.env.MESSAGING_SENDER_ID,
   appId: process.env.APP_ID,
 });
-
